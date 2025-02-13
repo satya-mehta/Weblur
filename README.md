@@ -67,4 +67,4 @@ Usage
 #### Submit a Pull Request: Once your changes are ready, submit a pull request with a clear description of your modifications.
 
 #### License
- - This project is licensed under the MIT License.See below for details or refer to the LICENSE file.
+ - This project is licensed under the MIT License.See below for details or refer to the [LICENSE](LICENSE) file.
