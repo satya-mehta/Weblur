@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weblur Settings</title>
+  <!-- Include Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      background-color: #F2F2F2;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+    h3, h4,h2 {
+      margin-bottom: 10px;
+      color: #0077B5;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: calc(100% - 20px);
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      border: 1px solid #0077B5;
+      border-radius: 3px;
+      background-color: #FFF;
+      color: #333;
+    }
+    textarea {
+      height: 60px;
+      resize: vertical;
+    }
+    button {
+      width: 100%;
+      padding: 5px;
+      border: none;
+      border-radius: 3px;
+      background-color: #FFA500;
+      color: #FFF;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #FFD700;
+    }
+    #settingsForm {
+      display: none;
+      border-top: 1px solid #0077B5;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    /* Social media icons container */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    /* Social icon styles & animation */
+    .social-icon {
+      color: #333;
+      font-size: 24px;
+      opacity: 0;
+      animation: slideIn 0.5s forwards;
+
+      &:hover {
+      margin-top: -1px;
+    }
+    
+    &#twitter:hover {
+      color: #77DDF6;
+    }
+
+    &#github:hover {
+      color: black;
+    }
+
+    &#linkedin:hover {
+      color: #0177B5;
+    }
+
+    &#mail:hover {
+      color: red;
+    }
+
+    }
+    .social-icon:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    .social-icon:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    .social-icon:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    .social-icon:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Weblur</h2>
+  
+  <!-- Initial Setup Section -->
+  <div id="initialSetupSection" style="display:none">
+    <h3>Configure Your Settings</h3>
+    <label for="username"><b>What should we call you: </b></label>
+    <input type="text" id="username" placeholder="Enter your username" />
+    
+    <label for="newPasskey"><b>Enter New Passkey:</b></label>
+    <input type="password" id="newPasskey" placeholder="New passkey" />
+    
+    <label for="confirmPasskey"><b>Confirm New Passkey:</b></label>
+    <input type="password" id="confirmPasskey" placeholder="Confirm new passkey" style="border-radius: 7px"/>
+    
+    <label for="websites"><b>Websites to Blur (one per line):</b></label>
+    <textarea id="websites" placeholder="https://example.com"></textarea>
+    
+    <button id="setup">Setup</button>
+  </div>
+  
+  <!-- Settings Section (for updating configuration) -->
+  <div id="settingsSection" style="display:none">
+    <h4>Settings</h4>
+    <div>
+      <label for="currentPasskey"><b>Enter Current Passkey to Edit Settings:</b></label>
+      <input type="password" id="currentPasskey" placeholder="Current passkey" />
+      <button id="verify">Verify</button>
+    </div>
+    <div id="settingsForm">
+      <label for="editUsername"><b>Username:</b></label>
+      <input type="text" id="editUsername" placeholder="Username" />
+      
+      <label for="editWebsites"><b>Websites to Blur (one per line):</b></label>
+      <textarea id="editWebsites" placeholder="https://example.com"></textarea>
+      
+      <hr/>
+      <h4>Change Passkey</h4>
+      <label for="newPasskey2"><b>New Passkey:</b></label>
+      <input type="password" id="newPasskey2" placeholder="New passkey" />
+      
+      <label for="confirmPasskey2"><b>Confirm New Passkey:</b></label>
+      <input type="password" id="confirmPasskey2" placeholder="Confirm new passkey" style="border-radius: 7px"/>
+      
+      <button id="saveSettings">Save Settings</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+  <h4>Made with love from SATYA MEHTA &#9829</h4>
+  <h6> Appreciate my work here or <u>Report a bug</u></h6>
+  
+  <!-- Social Media Icons Section -->
+  <div class="social-icons">
+    <a href="https://x.com/me_satyamehta" target="_blank" class="social-icon" id="twitter">
+      <i class="fa-brands fa-twitter"></i>
+    </a>
+    <a href="https://github.com/satya-mehta" target="_blank" class="social-icon" id="github">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/satyamehta21" target="_blank" class="social-icon" id="linkedin">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satyamehta577@gmail.com&su=Hello%20Satyam,%20i%20want%20to...&body=Write%20here" target="_blank" class="social-icon" id="mail">
+      <i class="fas fa-envelope"></i>
+    </a>    
+  </div>
+</body>
+</html>
