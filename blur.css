@@ -1,6 +1,6 @@
 /* This CSS will blur the entire page */
 body {
-  filter: blur(5px);
+  filter: blur(50px);
   pointer-events: none;
   user-select: none;
 }
