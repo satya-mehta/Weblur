@@ -53,18 +53,18 @@ Usage
 ## Customization
 
  - Social Media Icons:
- - - The popup includes animated social media icons for Twitter, GitHub, LinkedIn, and Mail. These icons slide in from left to right. You can update the links and icons in popup.html as desired.
+ - The popup includes animated social media icons for Twitter, GitHub, LinkedIn, and Mail. These icons slide in from left to right. You can update the links and icons in popup.html as desired.
 
  - Styling & Animations:
- - - Feel free to adjust the CSS styles in popup.html and the overlay in content.js to match your desired look and feel.
+ - Feel free to adjust the CSS styles in popup.html and the overlay in content.js to match your desired look and feel.
 
 ## Contributing
  - Contributions are welcome! If you have suggestions, improvements, or bug fixes, please follow these steps:
 
-## Open an Issue: Report your ideas or bugs in the repository’s Issues section.
+#### Open an Issue: Report your ideas or bugs in the repository’s Issues section.
 
-## Fork the Repository: Create a personal fork and make your changes.
-## Submit a Pull Request: Once your changes are ready, submit a pull request with a clear description of your modifications.
+#### Fork the Repository: Create a personal fork and make your changes.
+#### Submit a Pull Request: Once your changes are ready, submit a pull request with a clear description of your modifications.
 
-## License
-### This project is licensed under the MIT License.See below for details or refer to the LICENSE file.
+#### License
+ - This project is licensed under the MIT License.See below for details or refer to the LICENSE file.
