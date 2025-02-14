@@ -36,22 +36,27 @@ document.addEventListener('DOMContentLoaded', function() {
   inputField.focus();
 
   chrome.storage.sync.get(["passkey", "username", "websites"], function(config) {
+    // Get the current page's domain
+    const currentDomain = new URL(window.location.href).hostname;
     let shouldBlur = false;
+    
     if (config.websites && Array.isArray(config.websites)) {
-      for (let site of config.websites) {
-        if (window.location.href.indexOf(site) !== -1) {
+      for (let storedDomain of config.websites) {
+        // Compare the stored domain with the current domain
+        if (currentDomain === storedDomain) {
           shouldBlur = true;
           break;
         }
       }
     }
     
-    // If the current URL is not in the list, remove blur and overlay immediately.
     if (!shouldBlur) {
+      // Remove any blur if the domain isn't in the list
       document.body.style.filter = '';
       document.body.style.pointerEvents = '';
       document.body.style.userSelect = '';
-      overlay.remove();
+      const overlay = document.getElementById('passkeyOverlay');
+      if (overlay) overlay.remove();
       return;
     }
     

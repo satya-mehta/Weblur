@@ -54,6 +54,16 @@
       padding-top: 10px;
       margin-top: 10px;
     }
+
+    #addCurrentPage {
+      transition: color 0.6s ease;
+    }
+
+    #report:hover{
+      cursor: pointer;
+      color: #333;
+    }
+
     /* Social media icons container */
     .social-icons {
       display: flex;
@@ -133,6 +143,11 @@
     
     <button id="setup">Setup</button>
   </div>
+
+  <!-- Add current page to the list -->
+   <div id="addCurrentPage">
+    <button>Add this Webpage to the list</button>
+   </div>
   
   <!-- Settings Section (for updating configuration) -->
   <div id="settingsSection" style="display:none">
@@ -163,7 +178,7 @@
   
   <script src="popup.js"></script>
   <h4>Made with love from SATYA MEHTA &#9829</h4>
-  <h6> Appreciate my work here or <u>Report a bug</u></h6>
+  <h6> Appreciate my work or <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satyamehta577@gmail.com&su=Hello%20Satyam,%20i%20found%20a%20Bug...&body=Write%20here...(Include%20Screenshots)"target="_blank" style="color: #333;"><u id="report">Report a bug here</u></a></h6>
   
   <!-- Social Media Icons Section -->
   <div class="social-icons">
