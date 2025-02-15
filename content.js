@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.innerHTML = `
       <div style="background: white; color: black; padding: 20px; border-radius: 8px; text-align: center;">
         <h2 id="overlayHeader" style="margin-bottom: 10px;">Enter Passkey</h2>
-        <input type="password" id="passkeyInput" placeholder="Passkey" style="background-color: white; padding: 10px; width: 200px; margin-bottom: 10px; border-radius: 7px"/>
+        <input type="password" id="passkeyInput" placeholder="Passkey" style="background-color: white; color: black; padding: 10px; width: 200px; margin-bottom: 10px; border-radius: 7px"/>
         <br/>
         <button id="passkeySubmit" style="background-color: black; color: white; padding: 10px 20px;">Submit</button>
         <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
