@@ -4,14 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Load initial configuration.
   chrome.storage.sync.get(["passkey", "username", "websites"], function(config) {
-    if (!config.passkey || !config.username || !config.websites) {
+    if (!config.passkey || !config.username) {
       // No configuration found: show initial setup.
       document.getElementById('initialSetupSection').style.display = 'block';
       document.getElementById('settingsSection').style.display = 'none';
+      document.getElementById('addCurrentPage').style.display = 'none';
     } else {
       // Configuration exists: show the settings section.
       document.getElementById('initialSetupSection').style.display = 'none';
       document.getElementById('settingsSection').style.display = 'block';
+      document.getElementById('addCurrentPage').style.display = 'block';
       document.getElementById('editUsername').value = config.username;
       document.getElementById('editWebsites').value = config.websites.join('\n');
     }
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Convert the websites text into an array.
     const websites = websitesText.split('\n').map(site => site.trim()).filter(site => site);
 
-    if (!username || !newPasskey || !confirmPasskey || websites.length === 0) {
+    if (!username || !newPasskey || !confirmPasskey) { //removed the requirement field for websites
       alert('Please fill in all fields.');
       return;
     }
