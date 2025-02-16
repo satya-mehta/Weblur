@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.pointerEvents = 'none';
     document.body.style.userSelect = 'none';
     document.body.style.overflow = 'hidden';  //prevent the page from scrolling
+    document.querySelectorAll('video').forEach(video => video.pause()); //stop yt playing
     
     // Create the overlay element.
     const overlay = document.createElement('div');
