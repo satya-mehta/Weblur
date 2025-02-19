@@ -3,7 +3,7 @@
   "name": "Weblur - We Value Your Privacy",
   "version": "1.9",
   "description": "Blur specific webpages with passkey protection",
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "contextMenus", "tabs"],
   "background": {
     "service_worker": "background.js"
   },
