@@ -18,6 +18,12 @@ Weblur is a Chrome extension that protects your privacy by blurring specified we
 
 ## Installation
 
+**You can Install the Extension from Chrome Web Store and Microsoft Edge Add-ons.**
+ - Edge- https://microsoftedge.microsoft.com/addons/detail/weblur-we-value-your-pr/bnmpcobaiolfekooibdlbfoiknbhfppg
+ - Chrome- "Coming soon. For now, Use the steps below instead"
+
+**Installing from GitHub**
+
 1. **Clone or Download the Repository:**
    ```bash
    git clone https://github.com/satya-mehta/Weblur.git
