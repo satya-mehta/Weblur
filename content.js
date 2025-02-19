@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Insert the overlay into the page.
     document.documentElement.appendChild(overlay);
-    
+
     // Focus the input field automatically.
     const inputField = document.getElementById('passkeyInput');
     if (inputField) {
@@ -100,5 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitPasskey();
       }
     });
+    document.querySelectorAll('video').forEach(video => video.pause()); //stop yt playing
+    console.log("Pause created");
   });
 });
