@@ -3,7 +3,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
   // 1) Check for existing configuration settings and open config page if needed.
   chrome.storage.sync.get(["passkey", "username", "websites"], function (data) {
     if (!data.passkey || !data.username || !data.websites) {
-      // Open the configuration page automatically.
       chrome.tabs.create({ url: chrome.runtime.getURL("popup.html") });
     }
   });
