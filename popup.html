@@ -12,7 +12,7 @@
       color: #333;
       font-family: Arial, sans-serif;
     }
-    h3, h4,h2 {
+    h3, h4, h2 {
       margin-bottom: 10px;
       color: #0077B5;
     }
@@ -54,14 +54,40 @@
       padding-top: 10px;
       margin-top: 10px;
     }
-
-    #addCurrentPage {
-      transition: color 0.4s ease-in-out;
+    #knownSites {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      margin-bottom: 10px;
     }
-
-    #report:hover{
+    /* Style for selected icons */
+    #knownSites [data-domain].selected {
+      color: #58B813; /* Highlight color */
+      transform: scale(1.1);
+    }
+    #report:hover {
       cursor: pointer;
       color: #333;
+    }
+
+    #icon{
+      height: 200%;
+    }
+
+    #heading{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    #knownSites > i:hover{
+      cursor: pointer;
+    }
+
+    #addCurrentPage{
+      transition: color 0.4s ease-in-out;
     }
 
     /* Social media icons container */
@@ -71,7 +97,6 @@
       gap: 15px;
       margin-top: 20px;
     }
-    /* Social icon styles & animation */
     .social-icon {
       color: #333;
       font-size: 24px;
@@ -124,7 +149,11 @@
   </style>
 </head>
 <body>
+  <div id="heading">
   <h2>Weblur</h2>
+  <img src="images/icon48.png" alt="Weblur icon">
+  
+  </div>
   
   <!-- Initial Setup Section -->
   <div id="initialSetupSection" style="display:none">
@@ -137,17 +166,31 @@
     
     <label for="confirmPasskey"><b>Confirm New Passkey:</b></label>
     <input type="password" id="confirmPasskey" placeholder="Confirm new passkey" style="border-radius: 7px"/>
+    <br>
     
-    <!-- <label for="websites"><b>Websites to Blur (one per line):</b></label>
-    <textarea id="websites" placeholder="example.com(optional)"></textarea> -->
+    <!-- Icon buttons for known sites -->
+    <fieldset>
+      <legend>You may want to secure</legend>
+    <div id="knownSites">
+      <i id="whatsappIcon icon" data-domain="web.whatsapp.com" class="fa-brands fa-whatsapp fa-2xl"></i>
+      <i id="telegramIcon icon" data-domain="web.telegram.org" class="fa-brands fa-telegram fa-2xl"></i>
+      <span id="googlePhotosIcon icon" data-domain="photos.google.com">
+        <svg style="width: 24px;" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <title>Google Photos</title>
+          <path d="M12.678 16.672c0 2.175.002 4.565-.001 6.494-..."/>
+        </svg>
+      </span>
+    </div>
+    </fieldset>
+    <br><br>
     
     <button id="setup">Setup</button>
   </div>
 
   <!-- Add current page to the list -->
-   <div id="addCurrentPage">
+  <div id="addCurrentPage">
     <button>Add this Webpage to the list</button>
-   </div>
+  </div>
   
   <!-- Settings Section (for updating configuration) -->
   <div id="settingsSection" style="display:none">
@@ -177,8 +220,8 @@
   </div>
   
   <script src="popup.js"></script>
-  <h4>Made with love from SATYA MEHTA &#9829</h4>
-  <h6> Appreciate my work or <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satyamehta577@gmail.com&su=Hello%20Satyam,%20i%20found%20a%20Bug...&body=Write%20here...(Include%20Screenshots)"target="_blank" style="color: #333;"><u id="report">Report a bug here</u></a></h6>
+  <h4>Made with love from SATYA MEHTA &#9829;</h4>
+  <h6>Appreciate my work or <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satyamehta577@gmail.com&su=Hello%20Satyam,%20i%20found%20a%20Bug...&body=Write%20here...(Include%20Screenshots)" target="_blank" style="color: #333;"><u id="report">Report a bug here</u></a></h6>
   
   <!-- Social Media Icons Section -->
   <div class="social-icons">

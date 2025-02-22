@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Cache the addCurrentPage button for later use.
-  const btn = document.getElementById('addCurrentPage');
-
   // Load initial configuration.
   chrome.storage.sync.get(["passkey", "username", "websites"], function(config) {
     if (!config.passkey || !config.username) {
@@ -19,6 +16,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // Toggle selection effect for known sites icons.
+  const knownSitesContainer = document.getElementById('knownSites');
+  if (knownSitesContainer) {
+    knownSitesContainer.addEventListener('click', function(event) {
+      const target = event.target.closest('[data-domain]');
+      if (target) {
+        target.classList.toggle('selected');
+      }
+    });
+  }
+
+  // Setup event for initial configuration.
+  document.getElementById('setup')?.addEventListener('click', function() {
+    console.log('Saving settings');
+    const username = document.getElementById('username').value.trim();
+    const newPasskey = document.getElementById('newPasskey').value;
+    const confirmPasskey = document.getElementById('confirmPasskey').value;
+
+    // Gather selected domains from icon buttons.
+    let selectedDomains = [];
+    const selectedIcons = document.querySelectorAll('#knownSites [data-domain].selected');
+    selectedIcons.forEach(icon => {
+      const domain = icon.getAttribute('data-domain');
+      if (domain) {
+        selectedDomains.push(domain);
+      }
+    });
+
+    if (!username || !newPasskey || !confirmPasskey) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    if (newPasskey !== confirmPasskey) {
+      alert('Passkeys do not match!');
+      return;
+    }
+    // Save configuration along with selected domains.
+    chrome.storage.sync.set({ username, passkey: newPasskey, websites: selectedDomains }, function() {
+      alert('Configuration saved successfully!');
+      window.location.reload();
+    });
+  });
+
   // Add Current Page Button event listener.
   document.getElementById('addCurrentPage').addEventListener('click', function() {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -32,69 +72,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const domain = urlObj.hostname;
 
       chrome.storage.sync.get('websites', function(data) {
-        // Ensure websites is an array; if not, initialize it.
         let websites = data.websites || [];
 
         // Check if the domain is already in the list.
         if (websites.includes(domain)) {
-          alert("This website is already in your list!");
+          alert("This website is already in your secure list!");
         } else {
           websites.push(domain);
           chrome.storage.sync.set({ websites: websites }, function() {
-            // Refresh the textarea by re-reading the updated websites from storage.
             chrome.storage.sync.get('websites', function(updatedData) {
               document.getElementById('editWebsites').value = updatedData.websites.join('\n');
             });
-
-            // Change the button style for interactive feedback.
-            btn.style.backgroundColor = "#58B813";
-            btn.style.color = "black";
-            btn.style.width = "100%";
-            btn.style.borderRadius = "3px";
-            btn.style.padding = "5px";
-            btn.style.marginBottom = "10px";
-            btn.textContent = "Website Added!";
-            btn.style.textAlign = "center";
-
-            // After 2 seconds, revert the button back to its original style.
-            setTimeout(() => {
-              btn.style.backgroundColor = "#FFA500";
-              btn.style.width = "100%";
-              btn.style.borderRadius = "3px";
-              btn.style.color = "#FFF";
-              btn.style.padding = "5px";
-              btn.style.marginBottom = "10px";
-              btn.style.cursor = "pointer";
-              btn.textContent = "Add Current Page";
-              btn.style.textAlign = "center";
-            }, 2000);
+            alert(`Added ${domain} to your secure list!`);
+            window.location.reload();
           });
         }
       });
-    });
-  });
-
-  // Initial setup event.
-  document.getElementById('setup')?.addEventListener('click', function() {
-    const username = document.getElementById('username').value.trim();
-    const newPasskey = document.getElementById('newPasskey').value;
-    const confirmPasskey = document.getElementById('confirmPasskey').value;
-    const websitesText = document.getElementById('websites').value;
-    // Convert the websites text into an array.
-    const websites = websitesText.split('\n').map(site => site.trim()).filter(site => site);
-
-    if (!username || !newPasskey || !confirmPasskey) { //removed the requirement field for websites
-      alert('Please fill in all fields.');
-      return;
-    }
-    if (newPasskey !== confirmPasskey) {
-      alert('Passkeys do not match!');
-      return;
-    }
-    // Save the new configuration.
-    chrome.storage.sync.set({ username, passkey: newPasskey, websites }, function () {
-      alert('Configuration saved successfully!');
-      window.location.reload();
     });
   });
 
@@ -110,16 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Save updated settings.
+  // Save updated settings event.
   document.getElementById('saveSettings')?.addEventListener('click', function() {
     const newUsername = document.getElementById('editUsername').value.trim();
     const websitesText = document.getElementById('editWebsites').value;
     const websites = websitesText.split('\n').map(site => site.trim()).filter(site => site);
     const newPasskey = document.getElementById('newPasskey2').value;
     const confirmPasskey = document.getElementById('confirmPasskey2').value;
-
     let configToUpdate = { username: newUsername, websites };
-
     if (newPasskey || confirmPasskey) {
       if (newPasskey !== confirmPasskey) {
         alert('New passkeys do not match!');
