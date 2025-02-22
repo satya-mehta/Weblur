@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://chromewebstore.google.com/detail/ljcebnkehgbobhboghmnmgmmdjjhhjoe?utm_source=item-share-cp">
-    <img src="images/icon128.png" width="10%" alt="Weblur icon" style = "border-radius:5px"><br>Weblur
+    <img src="images/icon128.png" width="10%" alt="Weblur icon"><br>Weblur
   </a>
 </h1>
 
