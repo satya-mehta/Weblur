@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Passkey</title>
+  <style>
+    body {
+      background: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    input {
+      padding: 10px;
+      width: 200px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #0077B5;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005f8e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="overlayHeader">Enter Passkey</h2>
+    <input type="password" id="passkeyInput" placeholder="Passkey" />
+    <br/>
+    <button id="passkeySubmit">Submit</button>
+    <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
+  </div>
+  
+  <script>
+    // Wait until the DOM is loaded.
+    document.addEventListener('DOMContentLoaded', function() {
+      // Parse the original URL from the query parameter.
+      const params = new URLSearchParams(window.location.search);
+      const origUrl = params.get('orig');
+
+      // Optionally, update the header if you want to include a username.
+      // (You could also fetch username from storage if needed.)
+
+      // Function to submit the passkey.
+      function submitPasskey() {
+        const userPasskey = document.getElementById('passkeyInput').value;
+        chrome.runtime.sendMessage({ action: 'checkPasskey', passkey: userPasskey }, function(response) {
+          if (response.success) {
+            // Mark this tab as authenticated.
+            chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+              if (tabs && tabs[0]) {
+                const tabId = tabs[0].id;
+                chrome.runtime.sendMessage({ action: 'authenticateTab', tabId: tabId }, function(authResponse) {
+                  if (authResponse.success) {
+                    // Redirect to the original URL.
+                    window.location.href = origUrl;
+                  }
+                });
+              }
+            });
+          } else {
+            document.getElementById('errorMessage').innerText = 'Incorrect Passkey!';
+            document.getElementById('passkeyInput').value = '';
+            document.getElementById('passkeyInput').focus();
+          }
+        });
+      }
+
+      document.getElementById('passkeySubmit').addEventListener('click', submitPasskey);
+      document.getElementById('passkeyInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          submitPasskey();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

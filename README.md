@@ -18,9 +18,11 @@ Weblur is a Chrome extension that protects your privacy by blurring specified we
 
 ## Installation
 
-**You can Install the Extension from Chrome Web Store and Microsoft Edge Add-ons.**
- - Edge- https://microsoftedge.microsoft.com/addons/detail/weblur-we-value-your-pr/bnmpcobaiolfekooibdlbfoiknbhfppg
- - Chrome- "Coming soon. For now, Use the steps below instead"
+**Get your Weblur Extension**
+
+ [<img src="https://labels.tahoe.be/chrome_download_dark.svg" height="53" alt="Download Bonjourr for Chrome">](https://chromewebstore.google.com/detail/ljcebnkehgbobhboghmnmgmmdjjhhjoe?utm_source=item-share-cp)
+[<img src="https://labels.tahoe.be/edge_download_dark.svg" height="53" alt="Download Bonjourr for Edge">](https://microsoftedge.microsoft.com/addons/detail/weblur-we-value-your-pr/bnmpcobaiolfekooibdlbfoiknbhfppg)
+
 
 **Installing from GitHub**
 
