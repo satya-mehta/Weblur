@@ -1,5 +1,8 @@
-[<img src=images/icon128.png alt="Weblur">]
-# Weblur
+<h1 align="center">
+  <a href="https://chromewebstore.google.com/detail/ljcebnkehgbobhboghmnmgmmdjjhhjoe?utm_source=item-share-cp">
+    <img src="images/icon128.png" width="50%" alt="Bonjourr's website"> Weblur
+  </a>
+</h1>
 
 Weblur is a Chrome extension that protects your privacy by blurring specified websites until a valid passkey is entered. With Weblur, you can configure a custom passkey, username, and a list of websites that you want to keep hidden until authenticated.
 
