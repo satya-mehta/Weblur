@@ -29,11 +29,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             // Reload the current tab so the blur can take effect immediately.
             chrome.tabs.reload(tab.id, () => {
               //Alert the user or show a confirmation.
-              alert(`Added ${domain} to your secure list!`);
+              //alert(`Added ${domain} to your secure list!`);
             });
           });
         } else {
-          alert(`${domain} is already in your secure list!`);
+          //alert(`${domain} is already in your secure list!`);
         }
       });
     }
